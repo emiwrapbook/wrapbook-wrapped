@@ -3,16 +3,18 @@
 <head>
     <meta charset="utf-8">
     <title>300x600 Half Page</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <script type="text/javascript">
-        var clickTag = "https://www.wrapbook.com/industry/episodic-tv?utm_source=thr&utm_medium=cpc&utm_campaign=2404-thr-website-ads";
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style type="text/css">
-        body, html {
+        /* Reset and container styles */
+        html, body {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         #b_13132424321 {
@@ -30,18 +32,14 @@
             left: 0;
             max-width: 100%;
             height: auto;
-            animation-play-state: paused; /* Default: paused */
         }
 
-        /* Animations */
-        #img_13132424632.bnfy-enter { animation: puff-in-center 750ms ease 1 forwards; }
-        #img_13132424631.bnfy-enter { animation: fade-in 750ms ease 1 forwards; }
-        #img_13132444480.bnfy-enter { animation: fade-in-bottom 750ms ease 1 forwards; }
-        #img_13132444471.bnfy-enter { animation: fade-in-bottom 750ms ease 1 forwards; }
-        #img_13132444444.bnfy-enter { animation: scale-fade-down 700ms ease 1 forwards; }
-        #img_13132445046.bnfy-enter { animation: slide-in-bottom 1250ms ease 1 forwards; }
+        /* Animation Classes */
+        .bnfy-enter {
+            animation-play-state: paused;
+        }
 
-        /* Keyframes for animations */
+        /* Add your animations here */
         @keyframes puff-in-center {
             0% { transform: scale(2); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
@@ -56,16 +54,6 @@
             0% { transform: translateY(50px); opacity: 0; }
             100% { transform: translateY(0); opacity: 1; }
         }
-
-        @keyframes scale-fade-down {
-            0% { transform: scale(1.1); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        @keyframes slide-in-bottom {
-            0% { transform: translateY(1000px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
     </style>
 </head>
 <body>
@@ -78,26 +66,28 @@
         <img id="img_13132445046" class="bnfy-enter" alt="iPhone - product preview - half page 1" src="images/d59f9eb65a24aa3c66a883a09ddb125c.svg" />
     </div>
     <script>
-        // Intersection Observer to trigger animation once when scrolled into view
         document.addEventListener("DOMContentLoaded", function () {
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const elements = document.querySelectorAll(".bnfy-enter");
                         elements.forEach(el => {
-                            el.style.animationPlayState = "running"; // Trigger the animation
+                            el.style.animationPlayState = "running";
                         });
-                        observer.disconnect(); // Stop observing after triggering animation
+
+                        // Stop observing after the animation is triggered
+                        observer.disconnect();
                     }
                 });
             });
 
-            // Observe the banner container
+            // Observe the container
             const banner = document.getElementById("b_13132424321");
             observer.observe(banner);
         });
     </script>
 </body>
 </html>
+
 
 
