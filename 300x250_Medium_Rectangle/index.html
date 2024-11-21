@@ -1,107 +1,68 @@
-<!doctype html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>300x250 Medium Rectangle</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="ad.size" content="width=300,height=250">
-    <script type="text/javascript">
-        var clickTag = "https://www.wrapbook.com/industry/episodic-tv?utm_source=thr&utm_medium=cpc&utm_campaign=2404-thr-website-ads";
-    </script>
-    <style type="text/css">
-        body, html {
-            margin: 0;
-            padding: 0;
-        }
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff; /* Optional background for testing */
+    }
 
-        #b_13132424633 {
-            width: 300px;
-            height: 250px;
-            position: relative;
-            background-color: #6733ff;
-            overflow: hidden;
-            box-sizing: border-box;
-        }
+    #b_13132424633 {
+        width: 300px;
+        height: 250px;
+        position: relative;
+        background-color: #6733ff;
+        overflow: hidden;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-        #b_13132424633 img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            max-width: 100%;
-            height: auto;
-            animation-play-state: paused; /* Default: paused */
-            animation-iteration-count: 1; /* Play only once */
-            animation-fill-mode: forwards; /* Keep the final state */
-        }
+    #b_13132424633 img {
+        position: absolute; /* Stay positioned within the parent container */
+        max-width: 100%;
+        height: auto;
+        animation-play-state: paused; /* Default to paused */
+        animation-iteration-count: 1; /* Play only once */
+        animation-fill-mode: forwards; /* Keep the final state */
+    }
 
-        /* Animation Classes */
-        #img_13132424944.bnfy-enter { animation: puff-in-center 750ms ease 1; }
-        #img_13132424943.bnfy-enter { animation: fade-in 750ms ease 1; }
-        #img_13132444405.bnfy-enter { animation: fade-in-bottom 750ms ease 1; }
-        #img_13132444422.bnfy-enter { animation: fade-in-bottom 750ms ease 1; }
-        #img_13132444430.bnfy-enter { animation: scale-fade-down 700ms ease 1; }
-        #img_13132444886.bnfy-enter { animation: slide-in-bottom 1250ms ease 1; }
+    /* Animation Classes */
+    #img_13132424944.bnfy-enter { animation: puff-in-center 750ms ease 1; }
+    #img_13132424943.bnfy-enter { animation: fade-in 750ms ease 1; }
+    #img_13132444405.bnfy-enter { animation: fade-in-bottom 750ms ease 1; }
+    #img_13132444422.bnfy-enter { animation: fade-in-bottom 750ms ease 1; }
+    #img_13132444430.bnfy-enter { animation: scale-fade-down 700ms ease 1; }
+    #img_13132444886.bnfy-enter { animation: slide-in-bottom 1250ms ease 1; }
 
-        /* Keyframes for animations */
-        @keyframes puff-in-center {
-            0% { transform: scale(2); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
+    /* Keyframes for animations */
+    @keyframes puff-in-center {
+        0% { transform: scale(2); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+    }
 
-        @keyframes fade-in {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
+    @keyframes fade-in {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
 
-        @keyframes fade-in-bottom {
-            0% { transform: translateY(50px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
+    @keyframes fade-in-bottom {
+        0% { transform: translateY(50px); opacity: 0; }
+        100% { transform: translateY(0); opacity: 1; }
+    }
 
-        @keyframes scale-fade-down {
-            0% { transform: scale(1.1); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
+    @keyframes scale-fade-down {
+        0% { transform: scale(1.1); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+    }
 
-        @keyframes slide-in-bottom {
-            0% { transform: translateY(1000px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
-    </style>
-</head>
-<body>
-    <div id="b_13132424633">
-        <img id="img_13132424944" class="bnfy-enter" alt="Cursor / Hand" src="images/ed08c83bdca55f29862b1da2aacc2ae1.svg" />
-        <img id="img_13132424943" class="bnfy-enter" alt="Wrapbook Logo" src="images/691e1b570029a29b45f47e2518c33396.svg" />
-        <img id="img_13132444405" class="bnfy-enter" alt="Pay your crew with" src="images/5e1d1857e19a5e0bc8912dfb226003aa.svg" />
-        <img id="img_13132444422" class="bnfy-enter" alt="a click." src="images/da52d5afcb2b4e568859c43073d1505a.svg" />
-        <img id="img_13132444430" class="bnfy-enter" alt="Button - primary" src="images/a3290a8f6724492b0e4174ca0ff150e6.svg" />
-        <img id="img_13132444886" class="bnfy-enter" alt="iPhone - product preview - medium rectangle 1" src="images/2513cbf104b0f3f1c1e39b5e9fca46c7.svg" />
-    </div>
-    <script>
-        // Intersection Observer to trigger animations once when scrolled into view
-        document.addEventListener("DOMContentLoaded", function () {
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const elements = document.querySelectorAll(".bnfy-enter");
-                        elements.forEach(el => {
-                            el.style.animationPlayState = "running"; // Trigger the animation
-                        });
-                        observer.disconnect(); // Stop observing after triggering animation
-                    }
-                });
-            });
+    @keyframes slide-in-bottom {
+        0% { transform: translateY(1000px); opacity: 0; }
+        100% { transform: translateY(0); opacity: 1; }
+    }
+</style>
 
-            // Observe the banner container
-            const banner = document.getElementById("b_13132424633");
-            observer.observe(banner);
-        });
-
-        // Click behavior for the banner
-        document.getElementById('b_13132424633').addEventListener('click', function () {
-            window.open(window.clickTag);
-        });
-    </script>
-</body>
-</html>
