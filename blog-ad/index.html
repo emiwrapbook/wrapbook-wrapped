@@ -9,7 +9,6 @@
         var clickTag = "https://www.wrapbook.com/industry/episodic-tv?utm_source=thr&utm_medium=cpc&utm_campaign=2404-thr-website-ads";
     </script>
     <style type="text/css">
-        /* Reset Styles */
         body, html {
             margin: 0;
             padding: 0;
@@ -30,12 +29,7 @@
 
         #b_13132424633 img {
             position: absolute;
-            top: 0;
-            left: 0;
             display: block;
-            animation-play-state: paused; /* Animations start paused */
-            animation-fill-mode: forwards; /* Freeze the final state */
-            animation-iteration-count: 1; /* Play only once */
         }
 
         /* Animation Keyframes */
@@ -64,13 +58,19 @@
             100% { transform: translateY(0); opacity: 1; }
         }
 
-        /* Individual Element Animations */
-        #img_13132424944.bnfy-enter { animation: puff-in-center 750ms ease 1; }
-        #img_13132424943.bnfy-enter { animation: fade-in 750ms ease 1; }
-        #img_13132444405.bnfy-enter { animation: fade-in-bottom 750ms ease 1; }
-        #img_13132444422.bnfy-enter { animation: fade-in-bottom 750ms ease 1; }
-        #img_13132444430.bnfy-enter { animation: scale-fade-down 700ms ease 1; }
-        #img_13132444886.bnfy-enter { animation: slide-in-bottom 1250ms ease 1; }
+        /* Individual Animations */
+        .bnfy-enter {
+            animation-play-state: paused; /* Start paused */
+            animation-fill-mode: forwards;
+            animation-iteration-count: 1; /* Only play once per scroll event */
+        }
+
+        #img_13132424944.bnfy-enter { animation: puff-in-center 750ms ease; }
+        #img_13132424943.bnfy-enter { animation: fade-in 750ms ease; }
+        #img_13132444405.bnfy-enter { animation: fade-in-bottom 750ms ease; }
+        #img_13132444422.bnfy-enter { animation: fade-in-bottom 750ms ease; }
+        #img_13132444430.bnfy-enter { animation: scale-fade-down 700ms ease; }
+        #img_13132444886.bnfy-enter { animation: slide-in-bottom 1250ms ease; }
     </style>
 </head>
 <body>
@@ -82,20 +82,28 @@
         <img id="img_13132444430" class="bnfy-enter" alt="Button - primary" src="images/a3290a8f6724492b0e4174ca0ff150e6.svg" />
         <img id="img_13132444886" class="bnfy-enter" alt="iPhone - product preview - medium rectangle 1" src="images/2513cbf104b0f3f1c1e39b5e9fca46c7.svg" />
     </div>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Use Intersection Observer to trigger animation when in view
+            let playCount = 0; // To track how many times the animation has played
+            const maxPlays = 1; // Set how many times the animation should play
+
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // Trigger animations for all elements
+                    if (entry.isIntersecting && playCount < maxPlays) {
+                        // Start animations by setting the play state
                         const elements = document.querySelectorAll(".bnfy-enter");
                         elements.forEach(el => {
-                            el.style.animationPlayState = "running"; // Start animation
+                            el.style.animationPlayState = "running";
                         });
 
-                        // Disconnect observer so it only happens once
-                        observer.disconnect();
+                        // Increment play count
+                        playCount++;
+
+                        // Disconnect observer after max plays
+                        if (playCount >= maxPlays) {
+                            observer.disconnect();
+                        }
                     }
                 });
             });
@@ -105,10 +113,11 @@
             observer.observe(banner);
         });
 
-        // Add click event to open URL
+        // Add click event to open the URL
         document.getElementById('b_13132424633').addEventListener('click', function () {
             window.open(window.clickTag);
         });
     </script>
 </body>
 </html>
+
